@@ -242,7 +242,7 @@
       <div class="row">
         <div class="col-lg-5">
           <div class="section-heading">
-            <h2>Visit One Of Our Countries Now</h2>
+            <h2>Long Intro Title Here</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
           </div>
         </div>
@@ -361,14 +361,15 @@
             <div class="row">
               <div class="col-lg-12">
                 <div id="map">
-                  <iframe src="
+                  <iframe
+                    src="
                     
        
                     https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.74959831073!2d32.58994137496458!3d0.33628669966041425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbfed85b38e7%3A0x831a3e76983f16f6!2sKnDjoshua!5e0!3m2!1sen!2sug!4v1754909180905!5m2!1sen!2sug"
-                    width="300" height="855" style="border:0;" allowfullscreen="" loading="lazy"
+                    width="100%" height="755" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                 
+
                 </div>
               </div>
             </div>
@@ -471,214 +472,255 @@
 
 
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gold Trading Widget</title>
-  <style>
-    :root {
-      --primary: #FFD700;
-      --secondary: #121212;
-      --accent: #00E676;
-      --text: #FFFFFF;
-      --bg: rgba(10, 10, 10, 0.9);
-      --card: rgba(30, 30, 30, 0.95);
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-    body {
-      background-color: var(--secondary);
-      color: var(--text);
-      height: 100vh;
-      overflow-x: hidden;
-    }
-    .gold-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 350px;
-      max-height: 500px;
-      background: var(--card);
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      overflow: hidden;
-      z-index: 1000;
-      transform: translateY(100%);
-      opacity: 0;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      display: flex;
-      flex-direction: column;
-    }
-    .gold-widget.active {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .widget-header {
-      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,230,118,0.1));
-      padding: 12px 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(255,215,0,0.1);
-    }
-    .widget-title {
-      font-size: 1rem;
-      font-weight: bold;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      /* -webkit-background-clip: text; */
-      -webkit-text-fill-color: transparent;
-    }
-    .price-display {
-      font-size: 0.9rem;
-      color: var(--primary);
-      min-width: 110px;
-      text-align: right;
-    }
-    .widget-body {
-      flex-grow: 1;
-      max-height: 400px;
-      overflow-y: auto;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: var(--bg);
-    }
-    .mini-chart {
-      height: 100px;
-      background: rgba(40,40,40,0.7);
-      border-radius: 8px;
-      padding: 5px;
-    }
-    .notification {
-      background: rgba(255,215,0,0.1);
-      border: 1px solid rgba(255,215,0,0.2);
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 0.85rem;
-      animation: fadeIn 0.3s ease;
-      color: var(--primary);
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(5px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .chat-container {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-    .message {
-      max-width: 80%;
-      padding: 8px 12px;
-      border-radius: 12px;
-      line-height: 1.4;
-    }
-    .bot-message {
-      align-self: flex-start;
-      background: rgba(255,215,0,0.1);
-      border: 1px solid rgba(255,215,0,0.2);
-      color: var(--primary);
-    }
-    .user-message {
-      align-self: flex-end;
-      background: rgba(0,230,118,0.15);
-      border: 1px solid rgba(0,230,118,0.3);
-      color: var(--accent);
-    }
-    .input-area {
-      display: none;
-      gap: 8px;
-      padding-top: 10px;
-      margin-top: 10px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    input, button {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.85rem;
-    }
-    input {
-      flex: 1;
-      background: rgba(255,255,255,0.1);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    button {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: var(--secondary);
-      font-weight: bold;
-      cursor: pointer;
-      min-width: 60px;
-    }
-    .typing-indicator {
-      display: inline-block;
-      padding-left: 10px;
-      color: var(--primary);
-    }
-    .typing-indicator span {
-      height: 6px;
-      width: 6px;
-      background: rgba(255,215,0,0.7);
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 4px;
-      animation: typing 1s infinite ease-in-out;
-    }
-    @keyframes typing {
-      0%, 100% {opacity: 0.3;}
-      50% {opacity: 1;}
-    }
-    .widget-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      z-index: 999;
-      border: none;
-      color: var(--secondary);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    @media (max-width: 400px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gold Trading Widget</title>
+    <style>
+      :root {
+        --primary: #FFD700;
+        --secondary: #121212;
+        --accent: #00E676;
+        --text: #FFFFFF;
+        --bg: rgba(10, 10, 10, 0.9);
+        --card: rgba(30, 30, 30, 0.95);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      body {
+        background-color: var(--secondary);
+        color: var(--text);
+        height: 100vh;
+        overflow-x: hidden;
+      }
+
       .gold-widget {
-        width: 300px;
-        right: 10px;
-        bottom: 10px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 350px;
+        max-height: 500px;
+        background: var(--card);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        overflow: hidden;
+        z-index: 1000;
+        transform: translateY(100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
       }
-      .widget-toggle {
-        width: 45px;
-        height: 45px;
+
+      .gold-widget.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .widget-header {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 230, 118, 0.1));
+        padding: 12px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      }
+
+      .widget-title {
         font-size: 1rem;
+        font-weight: bold;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        /* -webkit-background-clip: text; */
+        -webkit-text-fill-color: transparent;
       }
-    }
-  </style>
-</head>
+
+      .price-display {
+        font-size: 0.9rem;
+        color: var(--primary);
+        min-width: 110px;
+        text-align: right;
+      }
+
+      .widget-body {
+        flex-grow: 1;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: var(--bg);
+      }
+
+      .mini-chart {
+        height: 100px;
+        background: rgba(40, 40, 40, 0.7);
+        border-radius: 8px;
+        padding: 5px;
+      }
+
+      .notification {
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 0.85rem;
+        animation: fadeIn 0.3s ease;
+        color: var(--primary);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .chat-container {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+
+      .message {
+        max-width: 80%;
+        padding: 8px 12px;
+        border-radius: 12px;
+        line-height: 1.4;
+      }
+
+      .bot-message {
+        align-self: flex-start;
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        color: var(--primary);
+      }
+
+      .user-message {
+        align-self: flex-end;
+        background: rgba(0, 230, 118, 0.15);
+        border: 1px solid rgba(0, 230, 118, 0.3);
+        color: var(--accent);
+      }
+
+      .input-area {
+        display: none;
+        gap: 8px;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      input,
+      button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.85rem;
+      }
+
+      input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      button {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: var(--secondary);
+        font-weight: bold;
+        cursor: pointer;
+        min-width: 60px;
+      }
+
+      .typing-indicator {
+        display: inline-block;
+        padding-left: 10px;
+        color: var(--primary);
+      }
+
+      .typing-indicator span {
+        height: 6px;
+        width: 6px;
+        background: rgba(255, 215, 0, 0.7);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 4px;
+        animation: typing 1s infinite ease-in-out;
+      }
+
+      @keyframes typing {
+
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .widget-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        border: none;
+        color: var(--secondary);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 400px) {
+        .gold-widget {
+          width: 300px;
+          right: 10px;
+          bottom: 10px;
+        }
+
+        .widget-toggle {
+          width: 45px;
+          height: 45px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
 
 
   <!-- Floating toggle button -->
@@ -698,14 +740,16 @@
       <canvas id="mini-chart" class="mini-chart" aria-label="Gold price chart" role="img"></canvas>
 
       <div class="notification" aria-live="polite" aria-atomic="true" id="price-alert">
-        <strong>Gold Price Alert:</strong> Current price is <span id="current-price">$1950.25</span>/oz, <span class="up">↑ 0.5%</span> today.
+        <strong>Gold Price Alert:</strong> Current price is <span id="current-price">$1950.25</span>/oz, <span
+          class="up">↑ 0.5%</span> today.
       </div>
 
       <div class="notification" aria-live="polite" aria-atomic="true">
         <strong>Market Update:</strong> Prices rising due to increased demand.
       </div>
 
-      <div class="chat-container" id="chat-container" aria-live="polite" aria-atomic="false" role="log" aria-relevant="additions"></div>
+      <div class="chat-container" id="chat-container" aria-live="polite" aria-atomic="false" role="log"
+        aria-relevant="additions"></div>
 
       <div class="input-area" id="input-area">
         <input type="text" id="user-input" placeholder="Type your question..." aria-label="Type your question" />
