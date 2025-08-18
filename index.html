@@ -10,6 +10,7 @@
     rel="stylesheet">
 
   <title>AurumX</title>
+  <link rel="icon" type="/img/logo.jpg" href="assets/images/logo.png">
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -1256,62 +1257,10 @@
 
 
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 
 
 
-<div id="g_id_onload"
-     data-client_id="1042602973962-dk0nv4ketttn9scie9g103ui5bcclqvi.apps.googleusercontent.com"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-callback="handleCredentialResponse"
-     data-auto_prompt="false">
-</div>
-
-<div class="g_id_signin"
-     data-type="standard"
-     data-shape="rectangular"
-     data-theme="outline"
-     data-text="continue_with"
-     data-size="large"
-     data-logo_alignment="left">
-</div>
-
-
-<!-- Decode the ID token in the browser -->
-<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-
-<script>
-  function handleCredentialResponse(response) {
-    // Google returns a JWT ID token in response.credential
-    try {
-      const data = jwt_decode(response.credential);
-
-      // Example: show user info on the page
-      const box = document.getElementById('whoami') || document.createElement('div');
-      box.id = 'whoami';
-      box.style.marginTop = '16px';
-      box.innerHTML = `
-        <div style="display:flex;align-items:center;gap:12px;">
-          <img src="${data.picture || ''}" alt="" style="width:40px;height:40px;border-radius:50%;" />
-          <div>
-            <div><strong>${data.name || 'User'}</strong></div>
-            <div>${data.email || ''}</div>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(box);
-
-      // You now have: data.email, data.name, data.picture, sub (Google user ID)
-      // On static GitHub Pages, this is *display-only*.
-      // For secure sessions, verify this token on a backend later.
-    } catch (e) {
-      console.error('Failed to decode ID token:', e);
-      alert('Sign-in succeeded, but decoding failed. Check console.');
-    }
-  }
-</script>
 
 
 
