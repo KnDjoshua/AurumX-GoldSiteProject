@@ -658,9 +658,9 @@
         <div class="footer-col">
           <h4 class="footer-title">Quick Links</h4><br><br><br>
           <ul style="float: left;" class="footer-links">
-            <li><a href="#purchase">Buy Gold</a></li>
+            <li><a href="about.html#purchase">Buy Gold</a></li>
             <!-- <li><a href="/sell-gold">Sell Gold</a></li> -->
-            <li><a href="#purchase">Pricing</a></li>
+            <li><a href="about.html#purchase">Pricing</a></li>
             <!-- <li><a href="/storage">Vault Storage</a></li> -->
             <!-- <li><a href="/authentication">Authentication</a></li> -->
             <li><a href="#about.html">About Us</a></li>
@@ -1256,10 +1256,62 @@
 
 
 
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 
 
 
 
+<div id="g_id_onload"
+     data-client_id="YOUR_CLIENT_ID_HERE"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="continue_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+
+
+<!-- Decode the ID token in the browser -->
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+<script>
+  function handleCredentialResponse(response) {
+    // Google returns a JWT ID token in response.credential
+    try {
+      const data = jwt_decode(response.credential);
+
+      // Example: show user info on the page
+      const box = document.getElementById('whoami') || document.createElement('div');
+      box.id = 'whoami';
+      box.style.marginTop = '16px';
+      box.innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px;">
+          <img src="${data.picture || ''}" alt="" style="width:40px;height:40px;border-radius:50%;" />
+          <div>
+            <div><strong>${data.name || 'User'}</strong></div>
+            <div>${data.email || ''}</div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(box);
+
+      // You now have: data.email, data.name, data.picture, sub (Google user ID)
+      // On static GitHub Pages, this is *display-only*.
+      // For secure sessions, verify this token on a backend later.
+    } catch (e) {
+      console.error('Failed to decode ID token:', e);
+      alert('Sign-in succeeded, but decoding failed. Check console.');
+    }
+  }
+</script>
 
 
 
