@@ -218,6 +218,248 @@ Global Styles
 
 
 
+
+
+/* contact us page */
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-header h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
+            border-radius: 2px;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-info1 {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 40px;
+        }
+        
+        .contact-form {
+            flex: 1.5;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .info-header {
+            margin-bottom: 30px;
+        }
+        
+        .info-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 15px;
+            color: #FFD700;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background: #FFD700;
+            color: #2c3e50;
+            transform: translateY(-3px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, #D4AF37, #FFD700);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #FFD700, #D4AF37);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .submit-btn i {
+            margin-left: 8px;
+        }
+        
+        .notification {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-info, .contact-form {
+                width: 100%;
+            }
+        }
+
+
+        /* contact us section styling ends */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Gold Pricing Grid Styles */
 .gold-pricing-grid {
   font-family: 'Segoe UI', Roboto, sans-serif;
